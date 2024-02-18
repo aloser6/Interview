@@ -74,6 +74,7 @@ sk_buff 可以表示各个层的数据包，在应用层数据包叫 data，在 
 校验机制：摘要算法 + 数字签名
 身份证书：数字证书
 详见：https://xiaolincoding.com/network/2_http/http_interview.html#https-%E8%A7%A3%E5%86%B3%E4%BA%86-http-%E7%9A%84%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98
+
 6、HTTP/1.1优化(减少发送HTTP请求)
 - 缓存技术
   - 客户端第一次访问服务端返回资源，并缓存到本地磁盘，下次访问如果资源没有过期直接从磁盘中获取
