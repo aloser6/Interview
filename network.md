@@ -51,7 +51,7 @@ MAC层协议有IP协议和ARP协议
   - 传输层取出sk_buff，如果是TCP则拷贝一份sk_buff副本，当发送完成后释放sk_buff副本，当接收到ACK确认后释放sk_buff原始数据。
   - 网络层选取路由（确认下一跳的 IP）、填充 IP 头、netfilter 过滤、对超过 MTU 大小的数据包进行分片。处理完这些工作后会交给网络接口层处理。
   - 网络接口层会通过 ARP 协议获得下一跳的 MAC 地址，然后对 sk_buff 填充帧头和帧尾，接着将 sk_buff 放到网卡的发送队列中。
-  ```markdown
+```markdown
 sk_buff 可以表示各个层的数据包，在应用层数据包叫 data，在 TCP 层我们称为 segment，在 IP 层我们叫 packet，在数据链路层称为 frame。用相同的数据结构是为了防止每层拷贝一次
 ```
 
