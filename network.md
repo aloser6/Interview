@@ -204,7 +204,7 @@ RSA算法缺陷：私钥不能泄露，使用会话密钥前传输的一些信�
 - TCP和UDP能用一个端口吗
   - 可以，因为接受的包可以根据包头区分式TCP还是UDP进而确定是哪个进程的消息
 - TCP建立连接
-[图片]
+![图片](https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost4/%E7%BD%91%E7%BB%9C/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.drawio.png)
 - 第三次握手是可以携带数据的，前两次不行
 - linux查看TCP连接状态 netstat -napt
 
@@ -215,13 +215,13 @@ RSA算法缺陷：私钥不能泄露，使用会话密钥前传输的一些信�
   - 为了防止旧的重复连接初始化造成混乱(RFC主要原因)
   - 同步双方初始序列号
   - 避免资源浪费，两次握手很显然不能解决 历史连接 问题。四次个人认为没必要是浪费资源的行为
-[图片]
+![图片](https://cdn.xiaolincoding.com//mysql/other/format,png-20230309230636571.png)
 
 ## 14、为什么每次建立 TCP 连接时，初始化的序列号都要求不一样呢？
 - 主要原因有两个方面：
   - 为了防止历史报文被下一个相同四元组的连接接收（主要方面）
   - 为了安全性，防止黑客伪造的相同序列号的 TCP 报文被对方接收
-[图片]
+![图片](https://cdn.xiaolincoding.com/gh/xiaolincoder/network/tcp/isn%E7%9B%B8%E5%90%8C.png)
 
 ## 15、初始序列号 ISN 是如何随机产生的？
 - 产生过程
@@ -253,7 +253,7 @@ RSA算法缺陷：私钥不能泄露，使用会话密钥前传输的一些信�
 ## 20、什么是 SYN 攻击？
 - 假设攻击者短时间伪造不同 IP 地址的 SYN 报文，久而久之就会占满服务端的半连接队列
 - 当 TCP 半连接队列满了，后续再在收到 SYN 报文就会丢弃，导致客户端无法和服务端建立连接。
-[图片]
+![图片](https://cdn.xiaolincoding.com//mysql/other/format,png-20230309230622886.png)
 在 TCP 三次握手的时候，Linux 内核会维护两个队列，分别是：
 半连接队列，也称 SYN 队列；
 全连接队列，也称 accept 队列；
@@ -269,7 +269,7 @@ RSA算法缺陷：私钥不能泄露，使用会话密钥前传输的一些信�
     - 内核参数决定（默认值是 5 次），比如将 tcp_synack_retries 减少到 2 次：
 
 ## 22、TCP 四次挥手过程是怎样的？
-[图片]
+![图片](https://cdn.xiaolincoding.com//mysql/other/format,png-20230309230614791.png)
 
 ## 23、为什么挥手需要四次？
 - 关闭连接时，客户端向服务端发送 FIN 时，仅仅表示客户端不再发送数据了但是还能接收数据。
