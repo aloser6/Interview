@@ -42,3 +42,4 @@
 
 ## 要学的
 1. gstreamer
+2. [mqtt](https://zhuanlan.zhihu.com/p/652694920)
