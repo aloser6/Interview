@@ -42,4 +42,6 @@
 
 ## 要学的
 1. gstreamer
-2. [mqtt](https://zhuanlan.zhihu.com/p/652694920)
+2. mqtt:
+   https://zhuanlan.zhihu.com/p/652694920
+   https://getiot.tech/zh/mqtt/paho-mqtt-c/
