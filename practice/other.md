@@ -45,3 +45,19 @@
 2. mqtt:
    https://zhuanlan.zhihu.com/p/652694920
    https://getiot.tech/zh/mqtt/paho-mqtt-c/
+3.libevent
+
+## MQTT
+1. 先屏蔽pipe和int的信号，int写了个信号处理函数，目前只有退出服务，方便后续扩展
+2. 用内布库读取配置，比如topic，有server，device，remote三种，还有就是一些mqtt服务器地址
+3. 定义一个任务队列和两个client，分别是remoteclient和localclient
+4. handle_remote_msg和handle_local_msg，负责send/publish消息，一个是外网给局域网，一个是局域网发给外网，局域网包括device和server(java后端)
+5. 使用libevent，当收到事件就调用handle_remote_msg发送msg
+6. 对官方的基础用法进行了封装，inti里有create，setbackcall，connect，其中connect的回调时subscript
+7. 使用观察者模式
+8. 主要分为三个类，一个MQTTAsyncPublisher，一个MQTTAsyncSubscriber，一个MQTTAsyncClient
+9. MQTTAsyncPublisher主要存connect_state，topic和send方法
+10. MQTTAsyncSubscriber主要存connect_state_，topic和callback函数
+11. MQTTAsyncClient主要是对官方的内容进行封装，如封装connect，subscriber，和一些回调函数
+12. 总结，当写入如日志时会自动发送消息到对应的topic(瞎猜的)
+   
