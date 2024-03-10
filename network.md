@@ -459,4 +459,21 @@ RSA算法缺陷：私钥不能泄露，使用会话密钥前传输的一些信�
 - TCP 建立连接的延迟
 - TCP 存在队头阻塞问题
 
-  
+## 58、如何基于 UDP 协议实现可靠传输？
+- 序列号、确认应答、超时重传、流量控制、拥塞控制 在应用层实现一遍
+- QUIC基于HTTP3实现可靠传输
+  - Packet Header
+    - QUIC 使用的 Packet Number 单调递增的设计，可以让数据包不再像 TCP 那样必须有序确认，QUIC 支持乱序确认，当数据包Packet N 丢失后，只要有新的已接收数据包确认，当前窗口就会继续向右滑动
+  - Frame Header
+    - Stream ID 作用：多个并发传输的 HTTP 消息，通过不同的 Stream ID 加以区别，类似于 HTTP2 的 Stream ID；
+    - Offset 作用：类似于 TCP 协议中的 Seq 序号，保证数据的顺序性和可靠性；
+    - Length 作用：指明了 Frame 数据的长度。
+    - 通过 Stream ID + Offset 字段信息实现数据的有序性,丢失的数据包和重传的数据包 Stream ID 与 Offset 都一致，说明这两个数据包的内容一致
+- QUIC 是如何解决 TCP 队头阻塞问题的？
+  - QUIC 给每一个 Stream 都分配了一个独立的滑动窗口，这样使得一个连接上的多个 Stream 之间没有依赖关系，都是相互独立的，各自控制的滑动窗口。
+- QUIC 是如何做流量控制的？
+  - Stream 级别的流量控制：Stream 可以认为就是一条 HTTP 请求，每个 Stream 都有独立的滑动窗口，所以每个 Stream 都可以做流量控制,接受一般滑动窗口就移动
+  - Connection 流量控制：限制连接中所有 Stream 相加起来的总字节数，防止发送方超过连接的缓冲容量
+- [quic](https://cdn.xiaolincoding.com//mysql/other/http3-over-quic-protocol-works.png)
+- [package header](https://cdn.xiaolincoding.com//mysql/other/6a94d41ef3d14cb6b7846e73da6c3104.png)
+- [frame](https://cdn.xiaolincoding.com//mysql/other/536298d2c54a43b699026bffe0f85010.png)
