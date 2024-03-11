@@ -477,3 +477,47 @@ RSA算法缺陷：私钥不能泄露，使用会话密钥前传输的一些信�
 - [quic](https://cdn.xiaolincoding.com//mysql/other/http3-over-quic-protocol-works.png)
 - [package header](https://cdn.xiaolincoding.com//mysql/other/6a94d41ef3d14cb6b7846e73da6c3104.png)
 - [frame](https://cdn.xiaolincoding.com//mysql/other/536298d2c54a43b699026bffe0f85010.png)
+
+## 59、多个 TCP 服务进程可以绑定同一个端口吗？
+- 如果两个 TCP 服务进程同时绑定的 IP 地址和端口都相同，那么执行 bind() 时候就会出错，错误是“Address already in use”。
+- 新特性SO_REUSEPORT可以
+
+## 60、重启 TCP 服务进程时，为什么会有“Address in use”的报错信息？
+- 当 TCP 服务进程重启时，服务端会出现 TIME_WAIT 状态的连接，TIME_WAIT 状态的连接使用的 IP+PORT 仍然被认为是一个有效的 IP+PORT 组合，相同机器上不能够在该 IP+PORT 组合上进行绑定，那么执行 bind() 函数的时候，就会返回了 Address already in use 的错误。
+- SO_REUSEADDR 作用是：如果当前启动进程绑定的 IP+PORT 与处于TIME_WAIT 状态的连接占用的 IP+PORT 存在冲突，但是新启动的进程使用了 SO_REUSEADDR 选项，那么该进程就可以绑定成功。
+
+## 61、客户端的端口可以重复使用吗？
+- 如果客户端已使用端口 64992 与服务端 A 建立了连接，那么客户端要与服务端 B 建立连接，还是可以使用端口 64992 的
+- IP + PORT 都相同，bind() 时候就会出错
+- 只要客户端连接的服务器不同，端口资源可以重复使用的。
+[picture](https://cdn.xiaolincoding.com/gh/xiaolincoder/network/port/%E7%AB%AF%E5%8F%A3%E9%80%89%E6%8B%A9.jpg)
+
+## 62、服务端没有 listen，客户端发起连接建立，会发生什么？
+- 服务端如果只 bind 了 IP 地址和端口，而没有调用 listen 的话，然后客户端对服务端发起了连接建立，服务端会回 RST 报文。
+
+## 63、不使用 listen ，可以建立 TCP 连接吗？
+- 是可以的，客户端是可以自己连自己的形成连接（TCP自连接），也可以两个客户端同时向对方发出请求建立连接（TCP同时打开），这两个情况都有个共同点，就是没有服务端参与，也就是没有listen，就能建立连接。
+- 在 TCP 自连接的情况中，客户端在 connect 方法时，最后会将自己的连接信息放入到这个全局 hash 表中，然后将信息发出，消息在经过回环地址重新回到 TCP 传输层的时候，就会根据 IP + 端口信息，再一次从这个全局 hash 中取出信息。于是握手包一来一回，最后成功建立连接。
+
+## 64、没有 accept，能建立 TCP 连接吗？
+- 不执行accept()方法，三次握手照常进行，并顺利建立连接。
+- accept()只是为了从全连接队列里取出一条连接。
+
+## 65、为什么半连接队列要设计成哈希表
+- 全连接队列（icsk_accept_queue）是个链表，而半连接队列（syn_table）是个哈希表。
+- 全连接里队列并不关心具体是哪个连接，只要是个连接就行，所以直接从队列头取就行了
+- 半连接队列等待着第三次握手的到来，现在有一个第三次握手来了则需要从队列里把相应IP端口的连接取出，如果半连接队列还是个链表，那我们就需要依次遍历，才能拿到我们想要的那个连接
+
+## 66、全连接队列满了会怎么样？
+- 默认当然会丢弃这个ACK。
+- tcp_abort_on_overflow设置为 0，全连接队列满了之后，会丢弃这个第三次握手ACK包，并且开启定时器，重传第二次握手的SYN+ACK，如果重传超过一定限制次数，还会把对应的半连接队列里的连接给删掉。
+- tcp_abort_on_overflow设置为 1，全连接队列满了之后，就直接发RST给客户端，效果上看就是连接断了。
+
+## 67、半连接队列要是满了会怎么样
+- 一般是丢弃
+- 当遇到 SYN Flood 攻击，tcp_syncookies设置为1，客户端发来第一次握手SYN时，服务端不会将其放入半连接队列中，而是直接生成一个cookies，这个cookies会跟着第二次握手，发回客户端。客户端在发第三次握手的时候带上这个cookies
+- cookies并不会有一个专门的队列保存，它是通过通信双方的IP地址端口、时间戳、MSS等信息进行实时计算的
+- cookies方案虽然能防 SYN Flood攻击，但是也有一些问题。因为服务端并不会保存连接信息，所以如果传输过程中数据包丢了，也不会重发第二次握手的信息。
+- 如果此时攻击者构造大量的第三次握手包（ACK包），同时带上各种瞎编的cookies信息，服务端收到ACK包后以为是正经cookies，憨憨地跑去解码（耗CPU），最后发现不是正经数据包后才丢弃。
+
+## 68、
