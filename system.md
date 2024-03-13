@@ -5,7 +5,7 @@
 - 堆段，包括动态分配的内存，从低地址开始向上增长；
 = 文件映射段，包括动态库、共享内存等，从低地址开始向上增长（跟硬件和内核版本有关 (opens new window)）；
 - 栈段，包括局部变量和函数调用的上下文等。栈的大小是固定的，一般是 8 MB。当然系统也提供了参数，以便我们自定义大小；
-- [picture](https://cdn.xiaolincoding.com/gh/xiaolincoder/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/32%E4%BD%8D%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80.png)
+- ![picture](https://cdn.xiaolincoding.com/gh/xiaolincoder/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/32%E4%BD%8D%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80.png)
 
 ## 虚拟内存
 - CPU -> MMU -> 物理地址 (MMU在CPU里)
@@ -21,7 +21,7 @@
 
 ## TLB
 - 把最常访问的几个页表项存储到访问速度更快的TLB
-- [picture](https://cdn.xiaolincoding.com//mysql/other/a3cdf27646b24614a64cfc5d7ccffa35.png)https://cdn.xiaolincoding.com//mysql/other/a3cdf27646b24614a64cfc5d7ccffa35.png)
+- ![picture](https://cdn.xiaolincoding.com//mysql/other/a3cdf27646b24614a64cfc5d7ccffa35.png)
 
 ## malloc 是如何分配内存的？
 - 当开辟的空间小于 128K 时，调用 brk（）函数，通过移动堆栈指针扩展堆区实现内存分配
