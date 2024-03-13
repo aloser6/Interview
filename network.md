@@ -474,9 +474,9 @@ RSA算法缺陷：私钥不能泄露，使用会话密钥前传输的一些信�
 - QUIC 是如何做流量控制的？
   - Stream 级别的流量控制：Stream 可以认为就是一条 HTTP 请求，每个 Stream 都有独立的滑动窗口，所以每个 Stream 都可以做流量控制,接受一般滑动窗口就移动
   - Connection 流量控制：限制连接中所有 Stream 相加起来的总字节数，防止发送方超过连接的缓冲容量
-- [quic](https://cdn.xiaolincoding.com//mysql/other/http3-over-quic-protocol-works.png)
-- [package header](https://cdn.xiaolincoding.com//mysql/other/6a94d41ef3d14cb6b7846e73da6c3104.png)
-- [frame](https://cdn.xiaolincoding.com//mysql/other/536298d2c54a43b699026bffe0f85010.png)
+- ![quic](https://cdn.xiaolincoding.com//mysql/other/http3-over-quic-protocol-works.png)
+- ![package header](https://cdn.xiaolincoding.com//mysql/other/6a94d41ef3d14cb6b7846e73da6c3104.png)
+- ![frame](https://cdn.xiaolincoding.com//mysql/other/536298d2c54a43b699026bffe0f85010.png)
 
 ## 59、多个 TCP 服务进程可以绑定同一个端口吗？
 - 如果两个 TCP 服务进程同时绑定的 IP 地址和端口都相同，那么执行 bind() 时候就会出错，错误是“Address already in use”。
@@ -490,7 +490,7 @@ RSA算法缺陷：私钥不能泄露，使用会话密钥前传输的一些信�
 - 如果客户端已使用端口 64992 与服务端 A 建立了连接，那么客户端要与服务端 B 建立连接，还是可以使用端口 64992 的
 - IP + PORT 都相同，bind() 时候就会出错
 - 只要客户端连接的服务器不同，端口资源可以重复使用的。
-[picture](https://cdn.xiaolincoding.com/gh/xiaolincoder/network/port/%E7%AB%AF%E5%8F%A3%E9%80%89%E6%8B%A9.jpg)
+![picture](https://cdn.xiaolincoding.com/gh/xiaolincoder/network/port/%E7%AB%AF%E5%8F%A3%E9%80%89%E6%8B%A9.jpg)
 
 ## 62、服务端没有 listen，客户端发起连接建立，会发生什么？
 - 服务端如果只 bind 了 IP 地址和端口，而没有调用 listen 的话，然后客户端对服务端发起了连接建立，服务端会回 RST 报文。
@@ -527,4 +527,4 @@ RSA算法缺陷：私钥不能泄露，使用会话密钥前传输的一些信�
 - close关闭socket读写，如果这时收到数据则会回复RST
 - shutdown可以选择关闭读还是写
 - 因为应用程序可能还有数据要发送，由应用程序决定什么时候调用关闭连接的函数，当调用了关闭连接的函数，内核就会发送 FIN 报文了
-[picture](https://cdn.xiaolincoding.com//mysql/other/71f5646ec58849e5921adc08bb6789d4.png)
+![picture](https://cdn.xiaolincoding.com//mysql/other/71f5646ec58849e5921adc08bb6789d4.png)
