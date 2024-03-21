@@ -20,6 +20,8 @@
 > map：红黑树，增删效率高
 >
 > unordered_map：哈希表，查找效率高
+>
+> [Link](https://blog.csdn.net/daaikuaichuan/article/details/80717222)
 ### 排序
 > 快排：最差O(n^2)，平均(nlogn)
 
@@ -53,3 +55,6 @@
 >> 
 >> 边缘触发(ET)
 ### malloc
+> [Link](https://www.cnblogs.com/ssezhangpeng/p/10808969.html)
+### 无锁队列
+> [Link](https://blog.csdn.net/lucky52529/article/details/101162787)
