@@ -24,8 +24,37 @@
 > [Link](https://blog.csdn.net/daaikuaichuan/article/details/80717222)
 ### 排序
 > 快排：最差O(n^2)，平均(nlogn)
-
-
+### new/delete，malloc/free
+> new做两件事，一是分配内存，二是调用类的构造函数；同样，delete会调用类的析构函数和释放内存。而malloc和free只是分配和释放内存。
+> new -> operator new -> malloc
+>
+> delete -> operator delete -> free
+> 
+> [link](https://www.cnblogs.com/ybqjymy/p/12365773.html)
+### push_back和emplace_back的区别
+> push_back添加一个元素先构造，然后拷贝/移动到容器里，然后将原本的删除
+> 
+> emplace_back添加一个元素直接再容器末尾构造，不需要拷贝/移动
+### 如何让类只能在堆内存上开辟
+> 让析构函数private，编译器就不会在栈上分配内存
+>
+> [link](https://blog.csdn.net/baidu_16370559/article/details/123330995)
+### 引用的引用
+> 因为引用本身不是一个对象，所以不能定义引用的引用。
+>
+> [link](https://blog.csdn.net/gabriella9655/article/details/108331298)
+### explicit
+> 让构造函数/转换函数必须显示调用，防止隐式转换
+### 为什么模板声明和定义不能分开写
+> 普通函数定义和声明放在不同文件里，编译器看到声明后会将其加入外部符号表，链接时就能找到他的定义
+>
+> 对于模板函数，如果定义和声明放在不同文件里，编译时遇到调用模板的地方，由于定义和声明不在同一文件，所有仅仅只是将声明加入外部符号表，而不会实例化调用类型的代码，当链接时就会找不到对应的代码
+### 类的前置声明
+> 当A使用B，B使用A时需要B先声明一下，这样才能编译通过
+> 
+> 当A在上面的基础上，A使用了b的定义，比如成员函数，这时候会报错，因为前置声明仅仅是声明，解决方法，声明和定义分开写
+>
+> [link](https://www.cnblogs.com/dobben/p/7440745.html)
 
 
 ### 互斥锁和自旋锁的区别
@@ -58,3 +87,13 @@
 > [Link](https://www.cnblogs.com/ssezhangpeng/p/10808969.html)
 ### 无锁队列
 > [Link](https://blog.csdn.net/lucky52529/article/details/101162787)
+### 内存分布
+> 栈
+>
+> 文件映射区(可用于加载动态库/动态申请内存(大于128k))
+>
+> 堆
+>
+> 数据段(包括 未初始化的全局变量/静态变量(.bss)， 已初始化的全局变量/静态变量(.data))
+>
+> 代码段(包括 代码和只读变量)
