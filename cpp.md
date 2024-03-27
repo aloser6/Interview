@@ -1,27 +1,8 @@
+# C++
 ### C++11有哪些新特新？
 > auto，左值右值，列表初始化，std::function & std::bind & lambda表达式，智能指针
 ### 函数有哪些常见的传参方式？有什么区别。
-> 传值、传递至、传引用
-### STL六大组件
-> 容器
->
-> 算法
->
-> 迭代器
->
-> 配接器：用来修饰容器或迭代器接口的东西
->
-> 仿函数：重载了operator()行为类似函数的函数
->
-> 配置器：分配/释放内存
-### STL
-> vector：连续内存
->
-> map：红黑树，增删效率高
->
-> unordered_map：哈希表，查找效率高
->
-> [Link](https://blog.csdn.net/daaikuaichuan/article/details/80717222)
+> 传值、传地址、传引用
 ### 排序
 > 快排：最差O(n^2)，平均(nlogn)
 ### new/delete，malloc/free
@@ -31,10 +12,6 @@
 > delete -> operator delete -> free
 > 
 > [link](https://www.cnblogs.com/ybqjymy/p/12365773.html)
-### push_back和emplace_back的区别
-> push_back添加一个元素先构造，然后拷贝/移动到容器里，然后将原本的删除
-> 
-> emplace_back添加一个元素直接再容器末尾构造，不需要拷贝/移动
 ### 如何让类只能在堆内存上开辟
 > 让析构函数private，编译器就不会在栈上分配内存
 >
@@ -59,6 +36,8 @@
 > override是用来检测是否成功重写了父类的虚函数
 >
 > final修饰虚函数防止子类重写虚函数。修饰类防止别的类继承。
+### 重写(override)和覆盖(overload)的区别
+> 重写要加virtual，覆盖不需要
 ### 构造函数列表初始化和赋值的区别
 > 更高效，直接对成员变量进行初始化，避免了额外的赋值操作。
 ### 有哪些情况必须要通过列表初始化
@@ -67,8 +46,43 @@
 > move只能左转右。forward既能左转右，也能右转左。
 >
 > [link](https://zhuanlan.zhihu.com/p/335994370)
+### 智能指针底层
+> 引用计数+裸指针
+### 信号量底层
+> 条件变量+互斥锁
+### 空指针，野指针，悬垂指针
+> 空指针指向空，野指针指向未知内存，悬垂指针所指向的内存区域已释放，生命周期已经结束
+### 智能指针底层
+> 引用计数+裸指针
+### 智能指针相互转换
+> weak->shared  weak.lock()
+> 
+> unique->shared  move(unique)
+
+# STL
+### STL六大组件
+> 容器
+>
+> 算法
+>
+> 迭代器
+>
+> 配接器：用来修饰容器或迭代器接口的东西
+>
+> 仿函数：重载了operator()行为类似函数的函数
+>
+> 配置器：分配/释放内存
+>
+> [Link](https://blog.csdn.net/daaikuaichuan/article/details/80717222)
+### array 和 vector 的区别
+> array定长数组, vector动态开辟
+### push_back和emplace_back的区别
+> push_back添加一个元素先构造，然后拷贝/移动到容器里，然后将原本的删除
+> 
+> emplace_back添加一个元素直接再容器末尾构造，不需要拷贝/移动
 
 
+# Linux操作系统
 ### 互斥锁和自旋锁的区别
 > 互斥锁阻塞，自旋锁忙等
 ### 阻塞和挂起的区别
@@ -111,3 +125,9 @@
 > 常量区(虚表)
 > 
 > 代码段(包括 代码和只读变量)
+### select改文件描述符上限
+> 通过宏定义
+### 线程比协程的优点
+> 
+### io多路复用底层实现
+> 
