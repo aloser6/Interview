@@ -58,6 +58,19 @@
 > weak->shared  weak.lock()
 > 
 > unique->shared  move(unique)
+### unique_ptr转移权限
+> move
+### unique_ptr释放权限
+> release
+### 智能指针reset
+> 释放原本的内存对象并指向新的指针对象
+### shared_ptr存在的问题
+> 安全返回this指针
+>
+> 循环引用
+### weak_ptr能否直接调用定义
+> 不能，因为引用计数为0
+
 
 # STL
 ### STL六大组件
@@ -80,6 +93,28 @@
 > push_back添加一个元素先构造，然后拷贝/移动到容器里，然后将原本的删除
 > 
 > emplace_back添加一个元素直接再容器末尾构造，不需要拷贝/移动
+### push_back和emplace_back的没有区别
+> 基础类型
+>
+> //TODO
+### 主动扩容
+> reserve改变容器大小，resize改变存储元素个数
+### resize超过容器大小会发生什么
+> 会将容器大小扩展到对应大小
+### map插入有哪几种方式
+> insert，emplace，下标
+### insert和emplace的差别
+> insert先创建键值对然后拷贝/移动到容器内
+>
+> emplace直接在容器内创建键值对
+>
+> 下标插入如果键存在则会直接覆盖不会有任何指示
+### insert
+> insert返回pair，第一个元素是所指向的迭代器，第二个元素返回是否成功插入(如果键已经存在则插入失败)
+### 怎么对map进行排序规则的更改
+> 写一个仿函数，类里面写bool operate()
+
+
 
 
 # Linux操作系统
