@@ -312,7 +312,23 @@
 > delete只会调用一次析构函数
 >
 > delete[]每个元素都会调用一次析构函数
-
+#### STL的两级空间配置器
+> 默认选择的为二级空间配置器。 如果大于128字节再转去一级配置器器
+>
+> 一级配置器： 一级空间配置器是以malloc()，free() 等执行实际的内存配置
+>
+> 二级配置器：[Link](https://interviewguide.cn/notes/03-hunting_job/02-interview/01-04-01-STL.html)
+#### 容器内部删除一个元素
+> 顺序容器（序列式容器，比如vector、deque）：erase迭代器不仅使所指向被删除的迭代器失效，而且使被删元素之后的所有迭代器失效(list除外)，所以不能使用erase(it++)的方式，但是erase的返回值是下一个有效迭代器；
+>
+> 关联容器(关联式容器，比如map、set、multimap、multiset等)：erase迭代器只是被删除元素的迭代器失效，但是返回值是void，所以要采用erase(it++)的方式删除迭代器；
+#### STL迭代器如何实现
+> 迭代器内部必须保存一个与容器相关联的指针，然后重载各种运算操作来遍历
+#### map插入方式有哪几种？
+> 用insert函数插入pair数据
+>
+> 用数组方式插入数据
+#### unordered_map(hash_map)和map的区别
 
 
 # Linux操作系统
