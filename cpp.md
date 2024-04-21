@@ -198,6 +198,7 @@
 > 顺序容器（序列式容器，比如vector、deque）
 >>
 >> erase的返回值是下一个有效迭代器；
+>>
 > 关联容器(关联式容器，比如map、set、multimap、multiset等)
 >>
 >> erase迭代器只是被删除元素的迭代器失效，但是返回值是void，所以要采用erase(it++)的方式删除迭代器；
