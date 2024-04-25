@@ -379,8 +379,32 @@
 >
 > 饿汉版
 >> main函数执行前就创建好对象
-
-
+#### 工厂模式
+> 简单工厂：同一系列的不同产品使用同一工厂
+>
+> 缺点：可扩展性差，新增时就要更改工厂的代码
+>
+> 工厂方法：同一系列的不同产品使用不同的工厂
+>
+> 缺点：不能生产不同系列的产品
+>
+> 抽象工厂：不同系列的不同产品使用不同工厂
+>
+> [Link](https://blog.csdn.net/m0_46308273/article/details/117126962)
+#### 观察者模式
+> 观察者：class ObserverInterface{ virtual void dosomething()=0; };
+>
+> 被观察者：class SubjectInterface{ virtual void Add(ObserverInterface* obr)=0; virtual void Remove(ObserverInterface* obr)=0; virtual void Notify()=0; }
+#### 中介者
+> ![picture](https://img-blog.csdnimg.cn/20200518161338131.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NwcF9sZWFybmVy,size_16,color_FFFFFF,t_70)
+>
+> [Link](https://blog.csdn.net/cpp_learner/article/details/106192950)
+>
+> 优点：达到程序解耦的目的
+#### 适配器模式
+> 将一个类的接口转换成客户希望的另外接口
+> 
+> [Link](https://blog.csdn.net/ahelloyou/article/details/123264127)
 
 
 
