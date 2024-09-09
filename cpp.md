@@ -46,6 +46,8 @@
 > move只能左转右。forward既能左转右，也能右转左。
 >
 > [link](https://zhuanlan.zhihu.com/p/335994370)
+>
+> [link](https://www.cnblogs.com/david-china/p/17080072.html)
 #### 智能指针底层
 > 引用计数+裸指针
 #### 信号量底层
