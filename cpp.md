@@ -218,6 +218,17 @@
 > 同步与互斥
 >
 > 信号量
+#### this指针详解
+> 为什么不能直接返回this：
+>
+> 为什么成员函数不能同时使用const和static：const表示在该函数体内不能修改成员的值，会在函数中添加一个隐式的参数const this*。static修饰的函数没有this指针，与const的用法冲突。
+>
+> 为什么要有this：一个类中的不同对象在调用自己的成员函数时，其实它们调用的是同一段函数代码，那么成员函数如何知道要访问哪个对象的数据成员
+>
+> .C++中this关键字是一个指向对象自己的一个常量指针，不能给this赋值
+>
+> [link](https://www.cnblogs.com/yuwanxian/p/10988736.html)
+> [link](https://iliubang.cn/posts/cpp/2022-05-03-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3enable_shared_from_this/)
 
 
 # STL
@@ -465,4 +476,4 @@
 #### 线程比协程的优点
 > 
 #### io多路复用底层实现
-> 
+>
