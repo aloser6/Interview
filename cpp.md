@@ -235,6 +235,22 @@
 >
 > [link](https://www.cnblogs.com/goya/p/11967200.html)
 #### 线程和进程共享什么
+#### 棱形继承
+> 使用虚继承可解决孙类有多份基类成员变量，子类有一个虚基类指针
+>
+> [link](https://blog.csdn.net/longjialin93528/article/details/80160467)
+#### 类的大小
+> 空类为 1：为了实例化出来的对象在内存上有独一无二的地址
+> 
+> 虚继承会产生虚基类指针
+>
+> 有虚函数会有虚指针
+>
+> 成员变量
+>
+> 父类成员变量大小
+>
+> [link](https://www.cnblogs.com/ZY-Dream/p/10016731.html)
 
 
 # STL
