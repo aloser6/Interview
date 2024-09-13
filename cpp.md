@@ -219,16 +219,24 @@
 >
 > 信号量
 #### this指针详解
-> 为什么不能直接返回this：
+> 为什么不能直接返回this：如果返回this会用一个外部变量来存储，当对象被析构，外部变量感知不到对象已被析构，继续使用可能导致程序崩溃，所以要使用shared_ptr
 >
+> 为什么不能直接使用shared_ptr返回this指针：指向对象的shared_ptr和接受this的shared_ptr并不共享引用计数，从而导致构造一次析构两次的情况，所以需要继承enable_shared_from_this才能安全返回
+> 
 > 为什么成员函数不能同时使用const和static：const表示在该函数体内不能修改成员的值，会在函数中添加一个隐式的参数const this*。static修饰的函数没有this指针，与const的用法冲突。
 >
 > 为什么要有this：一个类中的不同对象在调用自己的成员函数时，其实它们调用的是同一段函数代码，那么成员函数如何知道要访问哪个对象的数据成员
 >
-> .C++中this关键字是一个指向对象自己的一个常量指针，不能给this赋值
+> C++中this关键字是一个指向对象自己的一个常量指针，不能给this赋值
+>
+> enable_shared_from_this底层实现
 >
 > [link](https://www.cnblogs.com/yuwanxian/p/10988736.html)
+>
 > [link](https://iliubang.cn/posts/cpp/2022-05-03-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3enable_shared_from_this/)
+>
+> [link](https://www.cnblogs.com/goya/p/11967200.html)
+#### 线程和进程共享什么
 
 
 # STL
