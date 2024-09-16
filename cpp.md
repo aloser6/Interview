@@ -240,6 +240,9 @@
 >
 > [link](https://www.cnblogs.com/goya/p/11967200.html)
 #### 线程和进程共享什么
+> 所有区，栈指针，程序计数器等
+>
+>[link](https://xie.infoq.cn/article/6a00c3fddaaab607ff7a40358)
 #### 棱形继承
 > 使用虚继承可解决孙类有多份基类成员变量，子类有一个虚基类指针
 >
@@ -256,6 +259,7 @@
 > 父类成员变量大小
 >
 > [link](https://www.cnblogs.com/ZY-Dream/p/10016731.html)
+
 
 
 # STL
