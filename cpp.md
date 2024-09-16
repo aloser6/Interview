@@ -261,7 +261,10 @@
 > 父类成员变量大小
 >
 > [link](https://www.cnblogs.com/ZY-Dream/p/10016731.html)
-
+#### 为什么static和const成员变量不能在类内初始化，而static const int可以
+> static类外定义和初始化是保证static成员变量只被定义一次，如果在类内初始化，会导致每个对象都包含该静态成员
+>
+> static const int可以在类里面初始化，是因为它既然是const的，那程序就不会再去试图初始化了(只有int可以，static const float就不行了)
 
 
 # STL
