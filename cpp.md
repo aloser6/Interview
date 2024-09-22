@@ -276,7 +276,7 @@
 >
 > 迭代器
 >
-> 配接器：用来修饰容器或迭代器接口的东西
+> 配接器：改变接口的称为配接器，例如deque和stack底层都是调用queue的接口，改变queue接口从而形成deque和stack的称为配接器。还有迭代器配接器等
 >
 > 仿函数：重载了operator()行为类似函数的函数
 >
@@ -288,8 +288,8 @@
 #### push_back和emplace_back的区别
 > push_back添加一个元素先构造，然后拷贝/移动到容器里，然后将原本的删除
 > 
-> emplace_back添加一个元素直接再容器末尾构造，不需要拷贝/移动
-#### push_back和emplace_back的没有区别
+> emplace_back将参数传递给构造函数，直接构造一个对象，不需要拷贝/移动
+#### push_back和emplace_back什么情况下没有区别
 > 基础类型
 >
 > //TODO
