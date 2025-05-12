@@ -1,0 +1,291 @@
+/* 定义本地字体 */
+@font-face {
+    font-family: 'Poppins';
+    src: url('/web/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/web/fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 头部样式 */
+header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    max-width: none;
+    margin: 0;
+}
+
+.top-left {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: #000000;
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.small-logo {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+/* 主内容样式 */
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 80px;
+}
+
+.form-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+}
+
+.form-title h1 {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.form-container {
+    width: 360px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 4px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    padding-right: 30px;
+}
+
+/* 禁用浏览器默认的密码查看图标 */
+.password-wrapper input[type="password"]::-ms-reveal,
+.password-wrapper input[type="password"]::-ms-clear,
+.password-wrapper input[type="password"]::-webkit-textfield-decoration-container,
+.password-wrapper input[type="password"]::-webkit-credentials-auto-fill-button {
+    display: none;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    background: none;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+/* 自定义眼睛图标 */
+.toggle-password::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 10px;
+    border: 2px solid #666;
+    border-radius: 50%;
+    top: 3px;
+    left: 0;
+    background: transparent;
+}
+
+.toggle-password::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #666;
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+}
+
+/* 显示密码时添加斜线 */
+.toggle-password.active::before {
+    background: linear-gradient(45deg, transparent 45%, #666 45%, #666 55%, transparent 55%);
+}
+
+.input-group input::placeholder {
+    color: #aaaaaa;
+    font-size: 14px;
+}
+
+.input-group input:focus::placeholder {
+    opacity: 0;
+}
+
+.error-message {
+    color: #ff5555;
+    font-size: 14px;
+    margin-bottom: 10px;
+    min-height: 20px;
+}
+
+#auth-btn {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: not-allowed;
+    opacity: 0.2;
+    transition: opacity 0.3s;
+}
+
+#auth-btn:not(:disabled) {
+    opacity: 1;
+    cursor: pointer;
+}
+
+#auth-btn:hover:not(:disabled) {
+    background-color: #555555;
+}
+
+.switch-text {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #aaaaaa;
+}
+
+.switch-text a {
+    color: #666666;
+    text-decoration: none;
+}
+
+.switch-text a:hover {
+    text-decoration: underline;
+}
+
+/* 黑夜模式 */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+body.dark-mode .logo-link {
+    color: #ffffff;
+}
+
+body.dark-mode .form-container {
+    background-color: rgba(40, 40, 40, 0.9);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .input-group input {
+    border-color: #666;
+    background-color: #333;
+    color: #ffffff;
+}
+
+body.dark-mode .toggle-password::before {
+    border-color: #999;
+}
+
+body.dark-mode .toggle-password::after {
+    background: #999;
+}
+
+body.dark-mode .toggle-password.active::before {
+    background: linear-gradient(45deg, transparent 45%, #999 45%, #999 55%, transparent 55%);
+}
+
+body.dark-mode .toggle-password {
+    opacity: 0.7;
+}
+
+body.dark-mode .toggle-password:hover {
+    opacity: 1;
+}
+
+body.dark-mode .switch-text {
+    color: #cccccc;
+}
+
+body.dark-mode .switch-text a {
+    color: #999999;
+}
+
+body.dark-mode .error-message {
+    color: #ff7777;
+}

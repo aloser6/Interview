@@ -1,0 +1,188 @@
+/* 定义本地字体 */
+@font-face {
+    font-family: 'Poppins';
+    src: url('/web/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/web/fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* 头部样式 */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    max-width: 940px;
+    margin: 0 auto;
+    border: none;
+}
+
+.top-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.small-logo {
+    font-size: 24px;
+    font-weight: 400;
+    margin-right: 30px;
+}
+
+.nav-links a {
+    margin-right: 30px;
+    text-decoration: none;
+    color: #000000;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.top-right {
+    display: flex;
+    align-items: center;
+}
+
+.auth-link {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000000;
+    font-size: 14px;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+.mode-toggle {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.mode-toggle input {
+    display: none;
+}
+
+.mode-icon {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.mode-text {
+    font-size: 14px;
+}
+
+/* 主内容样式 */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 64px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border: none;
+}
+
+.intro-text {
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    color: #aaaaaa;
+}
+
+.slideshow {
+    width: 900px;
+    height: 450px;
+    margin: 0 auto;
+    margin-top: 80px;
+    position: relative;
+}
+
+.slides img {
+    width: 900px;
+    height: 450px;
+    object-fit: cover;
+    display: none;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slides img.active {
+    display: block;
+    opacity: 1;
+}
+
+.dots {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #000;
+}
+
+/* 黑夜模式 */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+body.dark-mode .nav-links a,
+body.dark-mode .auth-link {
+    color: #ffffff;
+}
+
+body.dark-mode .dot {
+    background-color: #666;
+}
+
+body.dark-mode .dot.active {
+    background-color: #fff;
+}
+
+body.dark-mode .intro-text {
+    color: #cccccc;
+}

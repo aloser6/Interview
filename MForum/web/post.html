@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论坛 - MForum</title>
+    <link rel="stylesheet" href="/web/post.css">
+</head>
+<body>
+    <header>
+        <div class="top-left">
+            <a href="/web/index.html" class="logo-link">
+                <img src="/picture/MForumW.ico" alt="MForum Icon" class="logo-icon">
+                <span class="small-logo">MForum</span>
+            </a>
+        </div>
+        <div class="top-right">
+            <button id="create-forum-btn" class="create-forum-btn">+</button>
+            <label class="mode-toggle">
+                <input type="checkbox" id="dark-mode-toggle">
+                <span class="mode-icon">☀️</span>
+                <span class="mode-text">白天</span>
+            </label>
+            <img src="/picture/user1.png" alt="User Icon" class="user-icon" id="user-profile-icon">
+        </div>
+    </header>
+    <hr class="header-divider">
+    <div class="container">
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-section="posts">帖子</a>
+                <a href="#" class="nav-item" data-section="forums">论坛</a>
+            </nav>
+            <hr class="sidebar-divider">
+            <div class="followed-forums">
+                <h3>关注的论坛</h3>
+                <ul id="followed-list"></ul>
+                <a href="#" id="show-more">更多</a>
+            </div>
+        </aside>
+        <main class="post-container">
+            <section id="posts" class="content-section active"></section>
+            <section id="forums" class="content-section"></section>
+            <section id="profile" class="content-section">
+                <div class="profile-header">
+                    <img src="" alt="User Icon" class="profile-user-icon" id="profile-user-icon">
+                    <h1 class="profile-user-name" id="profile-user-name"></h1>
+                </div>
+                <nav class="profile-nav">
+                    <a href="#" class="nav-item active" data-subsection="user-posts">发帖</a>
+                    <a href="#" class="nav-item" data-subsection="user-comments">评论</a>
+                </nav>
+                <hr class="profile-divider">
+                <div id="user-posts" class="subcontent-section active"></div>
+                <div id="user-comments" class="subcontent-section"></div>
+                <div id="user-favorites" class="subcontent-section"></div>
+            </section>
+        </main>
+    </div>
+    <script src="/web/post.js"></script>
+</body>
+</html>
